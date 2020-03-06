@@ -1,6 +1,6 @@
 import Service from '@ember/service';
 import { inject as service } from '@ember/service';
-import Router from '@ember/routing/router';
+import { action } from '@ember/object';
 
 const AUTH_KEY = 'shalck-userid';
 
@@ -16,8 +16,9 @@ export default class AuthService extends Service {
     this.router.transitionTo('teams');
   }
 
-  logoutWithUserId(){
+  @action
+  logout(){
     window.localStorage.removeItem(AUTH_KEY)
-    this.router.transistionTo('teams');
+    this.router.transitionTo('login');
   }
 }
