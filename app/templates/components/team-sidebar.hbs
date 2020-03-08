@@ -39,7 +39,7 @@
     {{#each @channels as |channel| }}
     <LinkTo @route='teams.team.channel' @model={{channel.id}} data-channel-id="general"
       class="team-sidebar__channel-link py-1 px-4 text-white no-underline block opacity-75 bg-teal-dark">
-      <span aria-hidden="true">#</span>
+    <span aria-hidden="true">#</span>
       {{channel.name}}
     </LinkTo>
     {{/each}}
