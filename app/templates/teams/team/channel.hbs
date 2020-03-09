@@ -1,7 +1,8 @@
 <main class="flex-1 flex flex-col bg-white overflow-hidden channel">
+  {{log "donut" this.model}}
   <ChannelHeader
-    @title="general_Hell"
-    @description="Just some general people generally chatting about general things"
+    @title={{this.model.name}}
+    @description={{this.model.description}}
   />
   <div class="py-4 flex-1 overflow-y-scroll channel-messages-list" role="list">
     <Message @messages={{this.model.messages}} @users={{this.model.users}} />
