@@ -10,14 +10,23 @@ module('Integration | Component | team-sidebar', function(hooks) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
-    await render(hbs`<TeamSidebar />`);
+    this.set('myTeam', {
+      name: 'general',
+      description: 'description',
+      channels: [
+        {
+          name: 'general name',
+        },
+      ],
+    });
+    await render(hbs`<TeamSidebar @team={{this.myTeam}} />`);
 
     assert.deepEqual(
       this.element.textContent
         .trim()
         .replace(/\s*\n+\s*/g, '\n')
         .split('\n'),
-      ['Mike North', 'Channels', 'Logout']
+      ['general', 'Mike North', 'Channels', '#', 'general name', 'Logout']
     );
   });
 });
