@@ -1,12 +1,17 @@
 import Route from '@ember/routing/route';
-import {inject as service} from '@ember/service';
+import { inject as service } from '@ember/service';
+import fetch from 'fetch';
 
 export default class TeamsRoute extends Route {
   @service auth;
-  async beforeModel(transition){
+  async beforeModel(transition) {
     await super.beforeModel(transition);
-    if (!this.auth.currentUserId){
-      this.transitionTo('login')
+    if (!this.auth.currentUserId) {
+      this.transitionTo('login');
     }
+  }
+  async model() {
+    const resp = await fetch(`/api/teams`)
+    return resp.json()
   }
 }
